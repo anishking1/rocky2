@@ -1,0 +1,82 @@
+/*thunderbolt & sung*/
+/*audiosel~ compiles to audiosel~.pd*/
+
+/* this is an external subpatch that helps lpc.pd main patch */
+
+canvas main(480, 125, 347, 340, 10) {
+	object("inlet~", 100, 189); /* object reference number is 0 */
+	object("inlet~", 143, 189); /* this one is 1 */
+	kfi(X, "obj 144 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1"); /* 2 */
+	kfi(X, "obj 161 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1"); /* 3 */
+	kfi(X, "msg 97 150 0"); /* 4 */
+	connectS(4, 0, 3, 0);
+	kfi(X, "msg 138 150 0"); /* 5 */
+	connectS(5, 0, 2, 0);
+	object("sel 1", 97, 129); /* 6 */
+	connectS(2, 0, 6, 0);
+	connectS(6, 0, 4, 0);
+	object("sel 1", 138, 129); /* 7 */
+	connectS(3, 0, 7, 0);
+	connectS(7, 0, 5, 0);
+	object("*~", 100, 225); /* 8 */
+	connectS(0, 0, 8, 0);
+	connectS(2, 0, 8, 1);
+	object("*~", 143, 225); /* 9 */
+	connectS(1, 0, 9, 0);
+	connectS(3, 0, 9, 1);
+	object("outlet~", 172, 256); /* 10 */
+	connectS(8, 0, 10, 0);
+	connectS(9, 0, 10, 0);
+	object("inlet~", 186, 189); /* 11 */
+	object("inlet~", 229, 189); /* 12 */
+	kfi(X, "obj 178 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1"); /* 13 */
+	connectS(4, 0, 13, 0);
+	connectS(5, 0, 13, 0);
+	kfi(X, "obj 195 80 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1"); /* 14 */
+	connectS(4, 0, 14, 0);
+	connectS(5, 0, 14, 0);
+	kfi(X, "msg 178 150 0"); /* 15 */
+	kfi(X, "msg 219 150 0"); /* 16 */
+	object("sel 1", 178, 129); /* 17 */
+	connectS(13, 0, 17, 0);
+	object("sel 1", 219, 129); /* 18 */
+	object("*~", 186, 225); /* 19 */
+	connectS(11, 0, 19, 0);
+	connectS(13, 0, 19, 0);
+	object("*~", 229, 225); /* 20 */
+	connectS(12, 0, 20, 0);
+	object("loadbang", 144, 33); /* 21 */
+	kfi(X, "msg 144 54 1"); /* 22 */
+	kfi(X, "text 17 -20 audiosel"); /* 23 */
+	kfi(X, "text 18 -2 Select between 4 audio inputs."); /* 24 */
+	kfi(X, "text 17 11 Selecting one disables others."); /* 25 */
+	kfi(X, "text 23 294 thunderbolt & sung"); /* 26 */
+	object("inlet", 243, -14); /* 27 */
+	object("sel 1", 243, 9); /* 28 */
+	object("sel 2", 243, 29); /* 29 */
+	object("sel 3", 243, 49); /* 30 */
+	object("sel 4", 243, 69); /* 31 */
+	kfi(X, "coords 0 -1 1 1 127 21 1 85 77"); /*no count*/
+	connectS(14, 0, 18, 0);
+	connectS(14, 0, 20, 0);
+	connectS(15, 0, 14, 0);
+	connectS(15, 0, 2, 0);
+	connectS(15, 0, 3, 0);
+	connectS(16, 0, 13, 0);
+	connectS(16, 0, 2, 0);
+	connectS(16, 0, 3, 0);
+	connectS(17, 0, 15, 0);
+	connectS(18, 0, 16, 0);
+	connectS(19, 0, 10, 0);
+	connectS(20, 0, 10, 0);
+	connectS(21, 0, 22, 0);
+	connectS(22, 0, 2, 0);
+	connectS(27, 0, 28, 0);
+	connectS(28, 0, 2, 0);
+	connectS(28, 1, 29, 0);
+	connectS(29, 0, 3, 0);
+	connectS(29, 1, 30, 0);
+	connectS(30, 0, 13, 0);
+	connectS(30, 1, 31, 0);
+	connectS(31, 0, 14, 0);
+}

@@ -1,0 +1,41 @@
+/*thunderbolt & sung*/
+/*myenv compiles to myenv.pd*/
+/* this is an external subpatch that helps lpcanalysis subpatch  — not actually used, commented out in the lpc main patch code :) */
+
+/*int i;*/
+
+canvas main(320, 356, 450, 300, 10) {
+  /*i = 94;
+  while (i < 95) {
+    object("pack", i, 129);
+    object("",,);
+
+    i = i + 1;
+    object("sig~", i, 229);
+  }*/
+  /*object("TESTTESTTEST", i, i);*/
+  kfi(X, "obj 94 129 pack~");
+  kfi(X, "obj 94 151 sum");
+  kfi(X, "obj 94 108 *~");
+  kfi(X, "obj 94 84 +~ 0");
+  kfi(X, "obj 94 208 sqrt");
+  kfi(X, "obj 95 229 sig~");
+  kfi(X, "obj 92 49 inlet~");
+  kfi(X, "obj 95 270 outlet~");
+  kfi(X, "obj 94 178 / 512");
+  kfi(X, "obj 145 86 iem_blocksize~");
+  kfi(X, "obj 178 268 outlet");
+  kfi(X, "text 230 269 frame-rate gain");
+  kfi(X, "connect 0 0 1 0");
+  kfi(X, "connect 1 0 8 0");
+  kfi(X, "connect 2 0 0 0");
+  kfi(X, "connect 3 0 2 0");
+  kfi(X, "connect 3 0 2 1");
+  kfi(X, "connect 4 0 5 0");
+  kfi(X, "connect 4 0 10 0");
+  kfi(X, "connect 5 0 7 0");
+  kfi(X, "connect 6 0 3 0");
+  kfi(X, "connect 6 0 9 0");
+  kfi(X, "connect 8 0 4 0");
+  kfi(X, "connect 9 0 8 1");
+}

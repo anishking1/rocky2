@@ -1,0 +1,32 @@
+/*thunderbolt & sung*/
+/*playloop compiles to playloop.pd*/
+/* this is an external subpatch that helps lpc.pd main patch */
+
+string f;
+canvas main(416, 342, 415, 285, 10) {
+  kfi(X, "text 13 6 playloop"); /* 0 */
+  kfi(X, "text 12 29 Play a sound in a table once or continuously"); /* 1 */
+  object("inlet", 37, 90); /* 2 */
+  kfi(X, "text 12 42 Creation args: \$1 - name of array containing sound"); /* 3 */
+  object("inlet", 185, 114); /* 4 */
+  object("tabplay~ \$1", 92, 186); /* 5 */
+  object("select 1", 113, 157); /* 6 */
+  f = "f";
+  object(f, 170, 157); /* 7 */
+  object("outlet~", 92, 211); /* 8 */
+  kfi(X, "obj 94 157 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1 -1"); /* 9 */
+  kfi(X, "text 13 71 Bang 1st inlet to play once"); /* 10 */
+  kfi(X, "text 124 97 Toggle looping with 2nd inlet"); /* 11 */
+  kfi(X, "text 168 185 End-of-sound bang optionally restarts"); /* 12 */
+  kfi(X, "text 23 241 thunderbolt & sung"); /* 13 */
+  object("select 1", 95, 136); /* 14 */
+  connectS(2, 0, 5, 0);
+  connectS(4, 0, 7, 1);
+  connectS(4, 0, 14, 0);
+  connectS(5, 0, 8, 0);
+  connectS(5, 1, 7, 0);
+  connectS(6, 0, 5, 0);
+  connectS(7, 0, 6, 0);
+  connectS(9, 0, 5, 0);
+  connectS(14, 0, 9, 0);
+}

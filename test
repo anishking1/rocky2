@@ -1,0 +1,45 @@
+/* thunderbolt & sung */
+
+string foo;
+int a;		/* global variable */
+canvas bar~(2,3,4,5) {
+	int b; /* local var in bar~ */
+	b = 3; /* save to local in priority */
+	a = 7; /* save to global in priority */
+
+	object("zoo~",a,b);
+	object("temp~",1,2);
+	connectW("zoo~", 0, "temp~", 1);
+	connectS(0, 0, 1, 0);
+}
+canvas main() {
+	int a;	/* local var in main */
+	int b;
+	a = 3; /* save to local in priority */
+	b = 5;
+	a = 4;
+	foo = "foo~";
+	object(foo,a,b);
+	bar~("jar~",2,3);
+	object("test~",a,b);
+	connectW("foo~", 0, "jar~", 1);
+	connectW("foo~", 0, "test~", 1);
+	object("last~",3,5);
+	if (a == 4) {
+		object("last2~",a,6);
+	}
+	if (a != 4) {
+		object("last2~",a,6);
+	}
+	for (a = 0; a < 3; a = a + 1) {
+		object("last3~",a,6);
+	}
+	kfi(X, "text 25 30 hello world!!!");
+	kfi(A, "25 30 15 45 50");
+	while (a < 5) {
+		object("last4~",a,8);
+		a = a + 1;
+	}
+	connectS(0, 1, 4, 1);
+	connectW("last4~", 0, "jar~", 1);
+}

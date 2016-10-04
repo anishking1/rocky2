@@ -1,0 +1,16 @@
+/*thunderbolt & sung*/
+
+/*a simple Hello, World! program in rocky2*/
+/*please use rocky2 with love and care*/
+/*
+
+yours in all plans simple,
+
+thunderbolt & sung
+
+*/
+
+canvas main(100, 100, 100, 100, 10){
+	kfi(X, "text 4 20 Hello \,");
+  	kfi(X, "text 40 20 World!");
+}

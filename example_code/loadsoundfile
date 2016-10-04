@@ -1,0 +1,35 @@
+/*thunderbolt & sung*/
+/*loadsoundfile compiles to loadsoundfile.pd*/
+/* this is an external subpatch that helps lpc.pd main patch */
+
+
+int i;
+canvas main(735, 33, 450, 300, 10) {
+  object("soundfiler", 36, 204); /* 0 */
+  object("outlet", 36, 250); /* 1 */
+  object("openpanel", 36, 126); /* 2 */
+  object("inlet", 36, 80); /* 3 */
+  object("/ 44.1", 36, 228); /* 4 */
+  kfi(X, "msg 36 180 read -resize \$1 \$2"); /* 5 */
+  object("t b b", 36, 103); /* 6 */
+  object("symbol \$1", 101, 126); /* 7 */
+  object("pack s s", 36, 152); /* 8 */
+  kfi(X, "text 4 4 loadsoundfile"); /* 9 */
+  kfi(X, "text 86 249 Return value is sound duration in ms"); /* 10 */
+  kfi(X, "text 79 80 Inlet is a bang to launch file selection panel"); /* 11 */
+  kfi(X, "text 103 152 Stick array name (\$1) onto file name"); /* 12 */
+  kfi(X, "text 164 180 Build message"); /* 13 */
+  kfi(X, "text 4 22 Opens a file selection panel to get a soundfile \, then loads it into an array."); /* 14 */
+  kfi(X, "text 6 52 Creation arg: \$1 - name of array to write data into"); /* 15 */
+  kfi(X, "text 7 279 thunderbolt & sung"); /* 16 */
+  i = 0;
+  connectS(i, i, 4, i);
+  connectS(2, i, 8, i);
+  connectS(3, i, 6, i);
+  connectS(4, i, 1, i);
+  connectS(5, i, 0, i);
+  connectS(6, i, 2, i);
+  connectS(6, 1, 7, i);
+  connectS(7, i, 8, 1);
+  connectS(8, i, 5, i);
+}
